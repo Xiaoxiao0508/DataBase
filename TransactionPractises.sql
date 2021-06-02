@@ -103,7 +103,7 @@ SELECT * FROM Person
 COMMIT TRAN
 -- --------------------------------------------------------Marked transactions------------------------------------------------------------------------------------
 -------------------------------------------------------------give transaction a name and mark name
--- -------------------------------------------------------------the marked transaction will be stored with more detials for future use
+-- -------------------------------------------------------------the marked transaction will be stored in the dbsb database with more detials for future use
 -- ------------------------------------------------------------can be used for recovery point with options STRPATMARK or STOPBEFOREMARK
 BEGIN TRAN DeletePerson WITH MARK 'MarkedTransactionDescription' 
     DELETE Person WHERE PersonID BETWEEN 3 AND 4
@@ -111,7 +111,12 @@ BEGIN TRAN DeletePerson WITH MARK 'MarkedTransactionDescription'
     COMMIT TRAN DeletePerson
 
     BEGIN TRAN
+
+    
 INSERT INTO Person 
 VALUES('Xiaoxiao', 'Cao','742 Evergreen Terrace','Springfield',88)
 COMMIT TRAN
 SELECT * FROM Person
+
+use msdb
+SELECT * FROM msdb.dbo.logmarkhistory
