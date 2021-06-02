@@ -109,3 +109,9 @@ BEGIN TRAN DeletePerson WITH MARK 'MarkedTransactionDescription'
     DELETE Person WHERE PersonID BETWEEN 3 AND 4
     
     COMMIT TRAN DeletePerson
+
+    BEGIN TRAN
+INSERT INTO Person 
+VALUES('Xiaoxiao', 'Cao','742 Evergreen Terrace','Springfield',88)
+COMMIT TRAN
+SELECT * FROM Person
